@@ -1,21 +1,26 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ListResponseModel } from '../models/listResponseModel';
 import { Product } from '../models/product';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProductService {
+  apiUrl = 'http://localhost:58713/api/';
 
-  apiUrl="http://localhost:58713/api/products/getall";
+  constructor(private httpClient: HttpClient) {}
 
-  constructor(private httpClient:HttpClient) { }
-
-  getProducts(): Observable<ListResponseModel<Product>>{
-    return this.httpClient.get<ListResponseModel<Product>>(this.apiUrl);
-    };
+  getProducts(): Observable<ListResponseModel<Product>> {
+    let newPath = this.apiUrl + 'products/getall';
+    return this.httpClient.get<ListResponseModel<Product>>(newPath);
   }
-
-
+  getProductsByCategory(
+    categoryId: number
+  ): Observable<ListResponseModel<Product>> {
+    let newPath =
+      this.apiUrl + 'products/getbycategory?categoryId=' + categoryId
+    return this.httpClient.get<ListResponseModel<Product>>(newPath);
+  }
+}
