@@ -21,6 +21,7 @@
       <th>Price</th>
       <th>Vat Added Price</th>
       <th>Stock Amount</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -31,6 +32,7 @@
       <td>{{ product.unitPrice | currency }}</td>
       <td>{{ product.unitPrice | vatAdded: 18 | currency }}</td>
       <td>{{ product.unitsInStock }}</td>
+      <td><button   (click)="addToCart(product)" class="btn btn-success">Add to Cart</button></td>
     </tr>
   </tbody>
 </table>
