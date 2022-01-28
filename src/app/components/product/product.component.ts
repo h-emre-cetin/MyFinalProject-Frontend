@@ -10,6 +10,8 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class ProductComponent implements OnInit {
   products: Product[] = [];
+  filterText="";
+  
   constructor(
     private productService: ProductService,
     private activatedRoute: ActivatedRoute

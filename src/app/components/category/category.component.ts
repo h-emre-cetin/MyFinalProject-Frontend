@@ -27,6 +27,8 @@ export class CategoryComponent implements OnInit {
     this.currentCategory = category;
   }
   getCurrentCategoryClass(category: Category) {
+
+    
     if (category == this.currentCategory) {
       return 'list-group-item active';
     } else {
@@ -40,4 +42,5 @@ export class CategoryComponent implements OnInit {
       return 'list-group-item';
     }
   }
+
 }
